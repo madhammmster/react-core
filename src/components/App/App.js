@@ -1,23 +1,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from "react-router-dom";
-import Main from '../../routes/Main/Main';
+import { Route, withRouter, Switch } from "react-router-dom";
 import Fader from '../Fader/Fader';
-
-import { startApp } from '../../store/reducers/appReducer';
-
+//routes
+import Main from '../../routes/Main/Main';
+import Login from '../../routes/Login/Login';
+import Page404 from '../../routes/404/404';
+import Register from '../../routes/Register/Register';
+//styles
 import './App.scss';
+//actions
+import { startApp } from '../../store/reducers/appReducer';
 
 class App extends Component {
 
   componentDidMount() {
-    this.props.startApp();
+    const { startApp } = this.props;
+    startApp();
   }
 
   render() {
     return (
-      <div className="App">                    
-        <Route path='/' component={Main} />
+      <div className="App">
+        <Switch>
+          <Route
+            exact
+            path='/'
+            withAuthentication
+            component={Main}
+          />
+
+          <Route
+            path='/login'
+            component={Login}
+          />
+
+          <Route
+            path='/register'
+            component={Register}
+          />
+          
+          <Route
+            component={Page404}
+          />
+        </Switch>
+
         <Fader />
       </div>
     );
@@ -26,14 +53,14 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    started: state.app.started
+    started: state.app.started,
+    user: state.user.user
   }
 }
 
 const mapDispatchToProps = {
-  startApp
+  startApp  
 }
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 

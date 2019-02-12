@@ -1,52 +1,41 @@
 import React, { Component } from 'react';
-import { Form as FinalForm, Field as FinalField } from 'react-final-form';
-import { Form } from 'semantic-ui-react';
-import { TextField } from '../../components/FinalForm/components/TextField';
-import { CheckboxField } from '../../components/FinalForm/components/CheckboxField';
+import { Header, Icon, Container, Button } from 'semantic-ui-react';
 
-class App extends Component {
+import { withFirebase } from '../../firebase';
+import { withAuthentication } from '../../components/Session/Session';
 
-    handleSubmit = (values) => {
-        console.log('values', values);
+import './Main.scss'
+
+class Main extends Component {
+
+
+    signOut = () => {
+        const { firebase } = this.props;
+        firebase.signOut();
+
     }
 
     render() {
         return (
-            <div className='route app-route' >
-                <div>
-                    Main Route
-                </div>
-                <br/>           <br/>           <br/>           
-                <FinalForm
-                    onSubmit={this.handleSubmit}
-                    render={
-                        ({ handleSubmit, submitting, pristine, form, values}) => (
-                            <Form onSubmit={handleSubmit}>                                
+            <div className='route main-route' >
+                <Container>
+                    <Header as='h2' style={{ position: 'relative' }}>
+                        <Icon name='home' />
+                        <Header.Content>
+                            Main Route
+                    <Header.Subheader>Main route in application</Header.Subheader>
+                        </Header.Content>
+                        <div className='container-sign-out-button'>
+                            <Button onClick={this.signOut}>Wyloguj</Button>
+                        </div>
+                    </Header>
 
-                                <FinalField
-                                    name='textField'
-                                    component={TextField}
-                                />
 
-                                <FinalField 
-                                    name='checkboxField'
-                                    component={CheckboxField}
-                                    label='test'
-                                />
-
-                                <div className="buttons">
-                                    <button type="submit" disabled={submitting || pristine}>Submit</button>                                    
-                                </div>
-
-                                <pre>{JSON.stringify(values, 0, 2)}</pre>
-                            </Form>
-                        )
-                    }
-                />
+                </Container>
             </div>
         );
     }
 }
 
 
-export default App;
+export default withAuthentication(withFirebase(Main));

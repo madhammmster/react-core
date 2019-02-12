@@ -1,11 +1,12 @@
 import { handleActions, createAction } from 'redux-actions';
+import {SHOW_FADER, HIDE_FADER} from '../constants';
 
 const defaultState = {
     isVisible: false
 };
 
-export const showFader = createAction('SHOW_FADER');
-export const hideFader = createAction('HIDE_FADER');
+export const showFader = createAction(SHOW_FADER);
+export const hideFader = createAction(HIDE_FADER);
 
 
 const faderReducer = handleActions(

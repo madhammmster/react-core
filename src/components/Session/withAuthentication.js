@@ -11,11 +11,12 @@ const withAuthentication = Component => {
     class WithAuthentication extends React.Component {
 
         componentDidMount() {
-            const { history, firebase, showFader, hideFader } = this.props;
+            const { history, firebase, showFader, hideFader, setUser} = this.props;
             showFader();
             
 
             this.listener = firebase.auth.onAuthStateChanged((user) => {
+                console.log(user);
                 setUser(user);
                 hideFader();
 

@@ -20,7 +20,7 @@ class Login extends Component {
 
             firebase.signInWithEmailAndPassword(email, password)
                 .then(() => {
-                    hideFader();
+                    hideFader();                    
                     history.push('/');
                 })
                 .catch((error) => {

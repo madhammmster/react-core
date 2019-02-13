@@ -18,9 +18,15 @@ class Register extends Component {
 
             firebase
                 .createUserWithEmailAndPassword(email, password)
-                .then(() => {
+                .then((data) => {
+                    const {user /*, additionalUserInfo */} = data;
+
+                    firebase.database.collection('users').doc(user.uid).set({
+                        email
+                    });
+                    
                     hideFader();
-                    history.push('/login');
+                    history.push('/');
                 })
                 .catch((error) => {
                     hideFader();

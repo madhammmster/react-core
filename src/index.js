@@ -25,6 +25,7 @@ const store = createStore(
         applyMiddleware(thunk)
     )
 );
+
 ReactDOM.render(
     <FirebaseContext.Provider value={new Firebase()}>
         <Provider store={store}>

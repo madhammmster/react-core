@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form as FinalForm, Field as FinalField } from 'react-final-form';
-import { Button } from 'semantic-ui-react';
+import { Button, Form} from 'semantic-ui-react';
 
 import TextFieldAdapter from '../../components/TextFieldAdapter';
 
@@ -15,17 +15,17 @@ class RegisterForm extends React.Component {
                 onSubmit={onSubmit}
                 render={({ handleSubmit }) =>
                     (
-                        <form className='register-form' onSubmit={handleSubmit}>
-                            <div className='container-field'>
+                        <Form className='register-form' onSubmit={handleSubmit}>
+                            <Form.Group >
                                 <FinalField
                                     name='email'
                                     placeholder='email'
-                                    icon='user' 
+                                    icon='user'
                                     iconPosition='left'
                                     component={TextFieldAdapter}
                                 />
-                            </div>
-                            <div className='container-field'>
+                            </Form.Group>
+                            <Form.Group >
                                 <FinalField
                                     name='password'
                                     type='password'
@@ -34,8 +34,8 @@ class RegisterForm extends React.Component {
                                     placeholder='hasło'
                                     component={TextFieldAdapter}
                                 />
-                            </div>
-                            <div className='container-field'>
+                            </Form.Group >
+                            <Form.Group >
                                 <FinalField
                                     name='secondPassword'
                                     type='password'
@@ -44,11 +44,11 @@ class RegisterForm extends React.Component {
                                     placeholder='powtórz hasło'
                                     component={TextFieldAdapter}
                                 />
-                            </div>
-                            <div className='container-login-button'>
-                                <Button type='submit'  color='blue'>zarejestruj się</Button>
-                            </div>
-                        </form>
+                            </Form.Group >
+                            <Form.Group >
+                                <Button type='submit' color='blue'>zarejestruj się</Button>
+                            </Form.Group >
+                        </Form>
                     )
                 }
 

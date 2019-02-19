@@ -1,15 +1,6 @@
 .login-form, .register-form{
-    padding-bottom: 10px;
-    
-    .container-field{
-        padding-top: 10px;
-    }
-
-    .container-login-button{
-        display: flex;
+    padding-bottom: 10px;   
+    .fields{
         justify-content: center;
-        align-items: center;
-
-        padding-top: 20px;
-    }
+    } 
 }

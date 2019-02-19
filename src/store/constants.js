@@ -8,3 +8,9 @@ export const HIDE_FADER = 'HIDE_FADER';
 //user
 export const SET_USER = 'SET_USER';
 
+
+//documents
+export const SET_DOCUMENTS = 'SET_DOCUMENTS';
+
+
+

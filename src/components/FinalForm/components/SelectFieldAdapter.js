@@ -1,14 +1,12 @@
 import React from 'react';
-import { Input, Form } from 'semantic-ui-react';
+import { Select, Form } from 'semantic-ui-react';
 
-const TextFieldAdapter = ({ input, meta, ...rest }) => {    
+const SelectFieldAdapter = ({ input, meta, ...rest }) => {
     return (
         <Form.Field>
-            <label>{rest.label}</label>
-            <Input
+            <Select
                 {...rest}
                 {...input}
-                label={undefined}
                 onChange={
                     (event, data) => {
                         const { value } = data;
@@ -20,4 +18,4 @@ const TextFieldAdapter = ({ input, meta, ...rest }) => {
     )
 }
 
-export default TextFieldAdapter;
+export default SelectFieldAdapter;

@@ -7,10 +7,12 @@ import Main from '../../routes/Main/Main';
 import Login from '../../routes/Login/Login';
 import Page404 from '../../routes/404/404';
 import Register from '../../routes/Register/Register';
+import Document from '../../routes/Document/Document';
 //styles
 import './App.scss';
 //actions
 import { startApp } from '../../store/reducers/appReducer';
+
 
 class App extends Component {
 
@@ -39,7 +41,12 @@ class App extends Component {
             path='/register'
             component={Register}
           />
-          
+
+          <Route
+            path='/document'
+            component={Document}
+          />
+
           <Route
             component={Page404}
           />
@@ -59,7 +66,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  startApp  
+  startApp
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

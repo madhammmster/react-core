@@ -3,11 +3,13 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
 class Fader extends Component {
-    render() {        
+    render() {
         return (
-            <Dimmer active={this.props.isVisible} >
-                <Loader>Loading</Loader>
-            </Dimmer>
+            <div className='container-fader'>
+                <Dimmer active={this.props.isVisible} >
+                    <Loader>Czekaj</Loader>
+                </Dimmer>
+            </div>
         );
     }
 }

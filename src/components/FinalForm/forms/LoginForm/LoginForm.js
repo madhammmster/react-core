@@ -1,8 +1,10 @@
 import React from 'react';
 import { Form as FinalForm, Field as FinalField } from 'react-final-form';
-import { Button, Form} from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 import TextFieldAdapter from '../../components/TextFieldAdapter';
+
+import { required } from '../../validators/validators';
 
 import './LoginForm.scss'
 
@@ -23,6 +25,7 @@ class LoginForm extends React.Component {
                                     icon='user'
                                     iconPosition='left'
                                     component={TextFieldAdapter}
+                                    validate={required}
                                 />
                             </Form.Group>
 
@@ -34,6 +37,7 @@ class LoginForm extends React.Component {
                                     iconPosition='left'
                                     placeholder='hasło'
                                     component={TextFieldAdapter}
+                                    validate={required}
                                 />
                             </Form.Group>
 

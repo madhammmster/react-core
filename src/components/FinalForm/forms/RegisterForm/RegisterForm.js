@@ -4,7 +4,9 @@ import { Button, Form} from 'semantic-ui-react';
 
 import TextFieldAdapter from '../../components/TextFieldAdapter';
 
-import './RegisterForm.scss'
+import './RegisterForm.scss';
+
+import { required } from '../../validators/validators';
 
 class RegisterForm extends React.Component {
 
@@ -23,6 +25,7 @@ class RegisterForm extends React.Component {
                                     icon='user'
                                     iconPosition='left'
                                     component={TextFieldAdapter}
+                                    validate={required}
                                 />
                             </Form.Group>
                             <Form.Group >
@@ -33,6 +36,7 @@ class RegisterForm extends React.Component {
                                     iconPosition='left'
                                     placeholder='hasło'
                                     component={TextFieldAdapter}
+                                    validate={required}
                                 />
                             </Form.Group >
                             <Form.Group >
@@ -43,6 +47,7 @@ class RegisterForm extends React.Component {
                                     iconPosition='left'
                                     placeholder='powtórz hasło'
                                     component={TextFieldAdapter}
+                                    validate={required}
                                 />
                             </Form.Group >
                             <Form.Group >

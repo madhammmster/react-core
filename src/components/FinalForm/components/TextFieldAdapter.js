@@ -1,14 +1,16 @@
 import React from 'react';
 import { Input, Form } from 'semantic-ui-react';
 
-const TextFieldAdapter = ({ input, meta, ...rest }) => {    
+const TextFieldAdapter = ({ input, meta, ...rest }) => {
     return (
-        <Form.Field>
+        <Form.Field error={meta.error && meta.touched}>
             <label>{rest.label}</label>
+            {meta.error && meta.touched && <div className='error-span'>{meta.error}</div>}
             <Input
                 {...rest}
                 {...input}
                 label={undefined}
+
                 onChange={
                     (event, data) => {
                         const { value } = data;
@@ -16,6 +18,7 @@ const TextFieldAdapter = ({ input, meta, ...rest }) => {
                     }
                 }
             />
+
         </Form.Field>
     )
 }

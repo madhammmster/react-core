@@ -9,6 +9,7 @@ import Page404 from '../../routes/404/404';
 import Register from '../../routes/Register/Register';
 import Document from '../../routes/Document/Document';
 //styles
+import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
 //actions
 import { startApp } from '../../store/reducers/appReducer';

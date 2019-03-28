@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter, Switch } from "react-router-dom";
 import Fader from '../Fader/Fader';
@@ -12,6 +12,7 @@ import Document from '../../routes/Document/Document';
 import './App.scss';
 //actions
 import { startApp } from '../../store/reducers/appReducer';
+import Menu from '../Menu/Menu';
 
 
 class App extends Component {
@@ -21,39 +22,59 @@ class App extends Component {
     startApp();
   }
 
+  renderMenu = () => {
+    return (
+      <Menu
+        items={
+          [
+            { label: 'main', path: '/' },
+            { label: 'add', path: '/document' }                    
+          ]
+        }
+      />
+    )
+  }
+
   render() {
     return (
-      <div className="App">
-        <Switch>
-          <Route
-            exact
-            path='/'
-            withAuthentication
-            component={Main}
-          />
+      <Fragment>
 
-          <Route
-            path='/login'
-            component={Login}
-          />
+        {this.renderMenu()}
 
-          <Route
-            path='/register'
-            component={Register}
-          />
+        <div className="app">
+          <Switch>
+            <Route
+              exact
+              path='/'
+              withAuthentication
+              component={Main}
+            />
 
-          <Route
-            path='/document'
-            component={Document}
-          />
+            <Route
+              path='/login'
+              component={Login}
+            />
 
-          <Route
-            component={Page404}
-          />
-        </Switch>
+            <Route
+              path='/register'
+              component={Register}
+            />
+
+            <Route
+              path='/document'
+              component={Document}
+            />
+
+            <Route
+              component={Page404}
+            />
+          </Switch>
+
+        </div>
 
         <Fader />
-      </div>
+
+      </Fragment>
     );
   }
 }

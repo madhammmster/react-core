@@ -1,9 +1,26 @@
-body{ 
-    background-color: #eee;
+@import "../Menu/Menu.scss";
+
+body {
+  background-color: #fff;
+  font-weight: 300;
 }
 
-.route{
-    width: 100%;
-    padding-top: 100px;
-    min-height: 100vh;    
+a{
+  color: inherit !important;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+}
+
+.app {
+  width: calc(100% - #{$menu-width});
+}
+
+.route {
+  
+  padding: 50px 50px 0 50px;
+  overflow: auto;
+  min-height: 100vh;
 }
